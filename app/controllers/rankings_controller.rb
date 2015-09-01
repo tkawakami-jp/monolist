@@ -1,7 +1,7 @@
 class RankingsController < ApplicationController
   
   def want
-    @hash = Want.group(:item_id).order('count_all desc').count
+    @hash = Want.group(:item_id).order('count_all desc').limit(10).count
     arr = Array.new()
     @hash.each do |key, value|
       @items = arr.push(Item.find(key))
@@ -9,7 +9,7 @@ class RankingsController < ApplicationController
   end
   
   def have
-    @hash = Have.group(:item_id).order('count_all desc').count
+    @hash = Have.group(:item_id).order('count_all desc').limit(10).count
     arr = Array.new()
     @hash.each do |key, value|
       @items = arr.push(Item.find(key))
