@@ -9,7 +9,7 @@ class OwnershipsController < ApplicationController
     end
 
     # itemsテーブルに存在しない場合はAmazonのデータを登録する。
-    binding.pry
+    
     if @item.new_record?
       begin
         # TODO 商品情報の取得 Amazon::Ecs.item_lookupを用いてください
