@@ -10,10 +10,11 @@ class RankingsController < ApplicationController
   
   def have
     @hash = Have.group(:item_id).order('count_all desc').limit(10).count
-    arr = Array.new()
-    @hash.each do |key, value|
-      @items = arr.push(Item.find(key))
-    end
+    @items = @hash.map{ |key, _| Item.find(key) }
+    #arr = Array.new()
+    #@hash.each do |key, value|
+    #  @items = arr.push(Item.find(key))
+    #end
   end
   
 end
